@@ -6,7 +6,7 @@ FROM python:3.9-slim
 COPY ./requirements.txt /app/requirements.txt
 
 # Copy source code to working directory
-COPY ./src /app/src
+COPY ./app /app/app
 
 # Set the working directory in the container
 WORKDIR /app
