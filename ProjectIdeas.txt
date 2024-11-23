@@ -1,0 +1,11 @@
+1. Habit Tracker with Gamification
+Create a habit tracker that rewards users with points for completing tasks and unlocks mini achievements or "pets" as incentives.
+
+2. Quick Study Guide Generator
+Users input topics, and the app provides a summarized study guide with definitions, key points, and questions using AI.
+
+3. Mental Wellness Journal
+A digital journal that lets users log their feelings and gives mood insights or calming tips based on their entries.
+
+4. Personal Finance Tracker
+A personal finance tracker website that helps users manage their income, expenses, and savings with intuitive visualizations and budgeting tools.
