@@ -2,6 +2,8 @@ services:
   backend:
     build:
       context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend_container
     ports:
       - "8000:8000"
     # depends_on:
