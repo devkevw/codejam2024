@@ -1,4 +1,4 @@
-import model.JournalEntry as JournalEntry
+import JournalEntry as JournalEntry
 
 class Journal:
     def __init__(self, user_id):
