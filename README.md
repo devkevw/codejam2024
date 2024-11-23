@@ -24,4 +24,7 @@ To spin up backend locally, you'll need to:
 1) Create a python environment
 2) Install the backend dependecies with `pip install -r requirements.txt`
    1) `requirements.txt` can be found `root/backend`
-3) 
+
+### How to reload fastapi server
+`uvicorn app.main:app --reload`
+

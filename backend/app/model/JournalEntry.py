@@ -12,7 +12,10 @@ class JournalEntry(BaseModel):
 
     def save_to_db(self):
         """Save the entry to a JSON file, creating the file if it doesn't exist."""
-        file_name = "temp-db/journal_entries.json"
+        # print current directory
+        print(os.getcwd())
+        
+        file_name = "journal_entries.json"
         
         # Ensure the file exists or create it
         if not os.path.exists(file_name):
