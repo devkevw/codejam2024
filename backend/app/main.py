@@ -35,10 +35,8 @@ def test_db():
 @app.post("/daily_entry")
 async def submit_entry(data: JournalEntry, debug = True):
     
-    
     # Write to db
     data.save_to_db()
-    
     
     response = {
         "message": data.message,

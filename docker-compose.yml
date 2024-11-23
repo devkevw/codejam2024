@@ -1,29 +1,29 @@
 services:
-  db:
-    image: postgres:latest
-    container_name: postgres_container
-    restart: always
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: mydb
-    volumes:
-      - db-data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-    ports:
-      - "5432:5432"
+  # db:
+  #   image: postgres:latest
+  #   container_name: postgres_container
+  #   restart: always
+  #   environment:
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: password
+  #     POSTGRES_DB: mydb
+  #   volumes:
+  #     - db-data:/var/lib/postgresql/data
+  #     - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  #   ports:
+  #     - "5432:5432"
 
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin_container
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@email.com
-      PGADMIN_DEFAULT_PASSWORD: admin_pass
-    ports:
-      - "5050:80"
-    depends_on:
-      - db
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   container_name: pgadmin_container
+  #   restart: always
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin@email.com
+  #     PGADMIN_DEFAULT_PASSWORD: admin_pass
+  #   ports:
+  #     - "5050:80"
+  #   depends_on:
+  #     - db
 
   backend:
     build:
@@ -33,10 +33,10 @@ services:
     restart: always
     ports:
       - "8000:8000"
-    environment:
-      DATABASE_URL: postgresql://user:password@db:5432/mydb
-    depends_on:
-      - db
+    # environment:
+    #   DATABASE_URL: postgresql://user:password@db:5432/mydb
+    # depends_on:
+    #   - db
 
 volumes:
   db-data:
