@@ -1,13 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POST Request Example</title>
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>365</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    body {
+      font-family: "Poppins", Arial, Helvetica, sans-serif, sans-serif;
+    }
+
+    form {}
+
+    textarea {
+      font-family: "Poppins", Arial, Helvetica, sans-serif, sans-serif;
+      resize: none;
+    }
+
+    button {
+      font-family: "Poppins", Arial, Helvetica, sans-serif, sans-serif;
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Kevin's fatness rolls us away</h1>
+  <form>
+    <label for="textbox"></label>
+    <textarea id="textbox" placeholder="How are you feeling today?" rows="8" cols="20" minlength="1" maxlength="160"
+      required></textarea>
+    <input type="radio" id="sad" name="mood" value="SAD">
+    <label for="sad">Sad</label>
+    <input type="radio" id="okay" name="mood" value="OKAY">
+    <label for="okay">Okay</label>
+    <input type="radio" id="happy" name="mood" value="HAPPY">
+    <label for="happy">Happy</label>
+    <br>
+    <button>Save</button>
+  </form>
+  <!-- <h1>Kevin's fatness rolls us away</h1>
     <form id="journalForm">
       <label for="userId">User ID:</label>
       <input type="text" id="userId" placeholder="Enter your user ID" required>
@@ -19,10 +51,10 @@
       <input type="number" id="rating" placeholder="Enter a rating (0-5)" required min="0" max="5">
       <br>
       <button type="button" id="submitButton">Submit</button>
-  </form>
+  </form> -->
 
-    <!-- Link to the external JavaScript file -->
-    <script src="script.js"></script>
+  <!-- Link to the external JavaScript file -->
+  <script src="script.js"></script>
 </body>
-</html>
 
+</html>
