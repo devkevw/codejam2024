@@ -3,7 +3,7 @@ from .model.JournalEntry import JournalEntry
 
 app = FastAPI()
 
-@app.post("/daily_entry")
+@app.post("/journalentry/daily")
 async def submit_entry(data: JournalEntry, debug = True):
     
     
