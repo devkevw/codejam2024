@@ -1,7 +1,7 @@
 services:
   db:
-    container_name: db_container
     image: postgres:latest
+    container_name: postgres_container
     restart: always
     environment:
       POSTGRES_USER: user
@@ -12,36 +12,31 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
+
   pgadmin:
-    container_name: pgadmin_container
     image: dpage/pgadmin4
+    container_name: pgadmin_container
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin_email
+      PGADMIN_DEFAULT_EMAIL: admin@email.com
       PGADMIN_DEFAULT_PASSWORD: admin_pass
     ports:
       - "5050:80"
     depends_on:
       - db
 
-
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
     container_name: backend_container
+    restart: always
     ports:
       - "8000:8000"
     environment:
-       DATABASE_URL: postgresql://user:password@db:5432/mydb
+      DATABASE_URL: postgresql://user:password@db:5432/mydb
     depends_on:
       - db
 
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #   ports:
-  #     - "3000:80"
-
 volumes:
-    db-data:
+  db-data:
