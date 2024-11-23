@@ -26,9 +26,12 @@ textarea {
   font-family: "Poppins", Arial, Helvetica, sans-serif, sans-serif;
   font-size: 16px;
   resize: none;
-
-
 }
+
+form:focus {
+    border-color: black; /* Change to your desired color (e.g., blue) */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Optional glow effect */
+  }
 
 button {
   font-family: "Poppins", Arial, Helvetica, sans-serif, sans-serif;
