@@ -1,1 +1,37 @@
-/* KEVIN IS SO OBESE I FEEL AN EARTHQUAKE NEXT TO ME EVERY TIME HE WALKS*/
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-size: 16px;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px; /* Limits the width */
+    margin: auto; /* Center horizontally and add top margin */
+    padding: 20px; /* Adds spacing inside */
+    background-color: #f9f9f9; /* Light background */
+    /* border-radius: 30px;  */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+
+textarea {
+  font-family: "Poppins", Arial, Helvetica, sans-serif, sans-serif;
+  font-size: 16px;
+  resize: none;
+
+
+}
+
+button {
+  font-family: "Poppins", Arial, Helvetica, sans-serif, sans-serif;
+}
+
+
