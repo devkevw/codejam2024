@@ -20,18 +20,33 @@ body {
     background-color: #f9f9f9; /* Light background */
     /* border-radius: 30px;  */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+
   }
 
 textarea {
-  font-family: "Poppins", Arial, Helvetica, sans-serif, sans-serif;
+  /* font-family: "Parkinsans", Arial, Helvetica, sans-serif, sans-serif;
   font-size: 16px;
   resize: none;
+  outline: none;
+  border-radius: 0.5em;
+  padding: 10px; */
+  font-family: "Parkinsans", Arial, Helvetica, sans-serif, sans-serif;
+  font-size: 16px;
+  resize: none;
+  border: 2px solid #ccc; /* Default border thickness */
+  border-radius: 0.5em;
+  outline: none; /* Removes default outline */
+  padding: 10px;
+  box-sizing: border-box; /* Ensures consistent sizing */
+  transition: border 0.3s ease; /* Smooth transition */
+  /* width: 100%;  */
 }
 
-form:focus {
-    border-color: black; /* Change to your desired color (e.g., blue) */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Optional glow effect */
-  }
+textarea:focus {
+  border-color: #89CFF0;
+  border-width: 2px;
+}
+
 
 button {
   font-family: "Poppins", Arial, Helvetica, sans-serif, sans-serif;
