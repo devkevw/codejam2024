@@ -7,11 +7,18 @@
 </head>
 <body>
     <h1>Kevin's fatness rolls us away</h1>
-    <form id="textForm">
-        <label for="textbox">Comment why you think kevin's fat</label>
-        <input type="text" id="textbox" name="textbox" placeholder="Type here..." required>
-        <button type="button" id="submitButton">Submit</button>
-    </form>
+    <form id="journalForm">
+      <label for="userId">User ID:</label>
+      <input type="text" id="userId" placeholder="Enter your user ID" required>
+      <br>
+      <label for="textbox">Message:</label>
+      <textarea id="textbox" placeholder="Enter your message" required></textarea>
+      <br>
+      <label for="rating">Rating:</label>
+      <input type="number" id="rating" placeholder="Enter a rating (0-5)" required min="0" max="5">
+      <br>
+      <button type="button" id="submitButton">Submit</button>
+  </form>
 
     <!-- Link to the external JavaScript file -->
     <script src="script.js"></script>

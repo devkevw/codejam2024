@@ -1,26 +1,35 @@
 document.getElementById('submitButton').addEventListener('click', async () => {
-    const textValue = document.getElementById('textbox').value;
+    const userIdValue = document.getElementById('userId').value;
+    const messageValue = document.getElementById('textbox').value;
+    const ratingValue = parseInt(document.getElementById('rating').value, 10);
 
-    // Ensure the text value is not empty
-    if (!textValue) {
-        alert('Please enter some text.');
+    // Ensure all fields have valid input
+    if (!userIdValue || !messageValue || isNaN(ratingValue)) {
+        alert('Please fill in all fields correctly.');
         return;
     }
 
     // Example POST request using Fetch API
     try {
-        const response = await fetch('https://localhost:8000//journalentry/daily', { // Replace with your URL
+        console.log('Sending request...');
+        const response = await fetch('http://localhost:8000/journalentry/daily', { // Replace with your URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ text: textValue }) // Send text value as JSON
+            body: JSON.stringify({
+                user_id: userIdValue,  // Match `JournalEntry` model field
+                message: messageValue, // Match `JournalEntry` model field
+                rating: ratingValue    // Match `JournalEntry` model field
+            })
         });
 
         if (response.ok) {
+            console.log("Response received: ", response);
             const responseData = await response.json();
             alert('Response received: ' + JSON.stringify(responseData));
         } else {
+            console.error('Failed to send request:', response);
             alert('Failed to send request: ' + response.statusText);
         }
     } catch (error) {
