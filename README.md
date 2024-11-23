@@ -8,4 +8,4 @@
 - [Daniel Cho]()
 - [Eric Huang]()
 - [Zuhayr Mahmood]()
-- [Kevin Wang]()
+- [Kevin Wang](https://github.com/devkevw)
