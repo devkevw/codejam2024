@@ -12,12 +12,12 @@ class JournalEntry(BaseModel):
 
     def save_to_db(self):
         """Save the entry to a JSON file, creating the file if it doesn't exist."""
-        file_name = "journal_entries.json"
+        file_name = "temp-db/journal_entries.json"
         
         # Ensure the file exists or create it
         if not os.path.exists(file_name):
             with open(file_name, "w") as f:
-                json.dump([], f)  # Initialize the file with an empty list
+                json.dump([], f, indent=4)  # Initialize the file with an empty list
         
         # Append the current entry to the file
         with open(file_name, "r+") as f:
@@ -29,7 +29,9 @@ class JournalEntry(BaseModel):
                 data = []
             
             # Add the new entry
-            data.append(self.dict())
+            entry = self.dict()
+            entry["timestamp"] = entry["timestamp"].isoformat()  # Convert datetime to ISO 8601 format
+            data.append(entry)
             
             # Write the updated data back to the file
             f.seek(0)  # Move to the beginning of the file
