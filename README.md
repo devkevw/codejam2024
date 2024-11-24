@@ -1,6 +1,6 @@
 # CodeJam 14 (2024)
 ## About
-**365 Days** is a digital wellness journal that lets users log their feelings daily and view their past entries.
+**365 Days** is a digital wellness journal that lets users log their feelings daily and view their past entries. Available as both a Chrome extension and a webpage, the app provides an accessible platform for mental wellness tracking, making it easy for users to monitor their emotional journeys over time.
 
 ## Features
 - Log daily emotions using a mood tracker with five predefined options (Very Bad, Bad, Okay, Good, Very Good).
