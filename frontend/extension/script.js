@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const textarea = document.getElementById("textbox");
   const radios = document.querySelectorAll('input[name="mood"]');
 
-
   // Enable button dynamically
   textarea.addEventListener("input", () => toggleButtonState());
   radios.forEach((radio) => {
