@@ -29,7 +29,7 @@ const ratingInts = {
   "GOOD": 2,
   "VERY GOOD": 1
 }
-const ratingColors = ['#ffe5ec', '#ffc2d1', '#ffb3c6', '#ff8fab', '#fb6f92'];
+const ratingColors = ['#bfe1f4', '#98ceed', '#67b4e3', '#438fc2', '#295b7b'];
 
 const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -77,7 +77,7 @@ const Calendar = () => {
       const dateKey = format(date, 'yyyy-MM-dd');
       // console.log("Date:", dateKey);
       if (isSameDay(date, selectedDate)) {
-        return 'primary.main'; // Highlight selected cell in blue
+        return 'primary.secondary'; // Highlight selected cell in grey
       } 
 
       const ratingColor = (dateKey) => {
