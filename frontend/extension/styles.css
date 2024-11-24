@@ -144,3 +144,17 @@ button:enabled:active {
 }
 
 
+img.btn {
+  filter: invert(96%) sepia(0%) saturate(75%) hue-rotate(168deg) brightness(89%) contrast(85%);
+  transition: all 0.3s ease;
+}
+
+img.btn:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+input[type="radio"]:checked + label img {
+  filter: invert(74%) sepia(40%) saturate(313%) hue-rotate(162deg) brightness(102%) contrast(86%);
+}
+
