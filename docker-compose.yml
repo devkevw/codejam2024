@@ -7,8 +7,10 @@ services:
     ports:
       - "8000:8000"
 
-  # frontend:
-  #   build:
-  #     context: ./frontend/webpage
-  #   ports:
-  #     - "3000:80"
+  frontend:
+    build:
+      context: ./frontend/webpage
+    container_name: frontend_container
+    ports:
+      - "3000:80"
+
