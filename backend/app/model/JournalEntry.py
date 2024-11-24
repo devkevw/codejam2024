@@ -6,11 +6,11 @@ import datetime as dt
 
 class JournalEntry(BaseModel):
     message: str
-    rating: int = Field(..., ge=0, le=5, description="Rating should be between 0 and 5")
+    rating: str
     year: int
     month: int
     day: int
-    timestamp: dt.datetime = None  # Will be computed based on year, month, and day
+    timestamp: dt.datetime = None  # Will be computed based on year, month, and day # I think this can be removed but wtv
 
     @validator("timestamp", pre=True, always=True)
     def construct_timestamp(cls, value, values):
@@ -40,7 +40,11 @@ class JournalEntry(BaseModel):
 
         # Save the journal entry to the file (overwrite if it already exists)
         with open(file_path, "w") as f:
-            json.dump(self.dict(), f, indent=4, default=str)  # Use default=str for datetime serialization
+            data_to_save = {
+                "message": self.message,
+                "rating": self.rating,
+            }
+            json.dump(data_to_save, f, indent=4, default=str)  # Use default=str for datetime serialization
         
         print(f"Journal entry saved to {file_path}")
     
