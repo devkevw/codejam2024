@@ -1,10 +1,12 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
+from typing import Optional
 
 from .model.JournalEntry import JournalEntry
 from .model.Journal import Journal
 
 app = FastAPI()
+debug = False
 
 # Add CORS middleware
 app.add_middleware(
@@ -15,38 +17,58 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 
-@app.post("/journalentry/daily")
-async def submit_entry(data: JournalEntry, debug=True):
-    # Write to db
-    data.save_to_db()
-
-    response = {
-        "message": data.message,
-        "rating": data.rating,
-        "status": "Success"
-    }
-    if debug:
-        response["type"] = str(type(data))
-        response["dir"] = str(dir(data))
-
-    return response
-
-
 @app.get("/")
 def read_root():
-    return {"message": "Hello, Dockerized API"}
+    return {"message": "Backend API for the Journaling App"}
 
+# Add a new endpoint to retrieve all journal entries for a given month
+@app.get("/journal")
+def read_entries_month(
+    year: Optional[int] = Query(..., description="The year for the journal entries"),
+    month: Optional[int] = Query(..., ge=1, le=12, description="The month (1-12) for the journal entries"),
+    debug: bool = True
+):
+    # try:
+    if year is None or month is None:
+        return {"error": "Both year and month must be specified"}
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str = None):
-    return {"item_id": item_id, "query": q}
-
-@app.get("/journalentry/{journal_id}")
-def get_entry():
-    # TODO: Implement this method
-    return JournalEntry(entry_id="1", message="Hello, World", rating=5)
-
-@app.get("/journalentry/{year}/{month}")
-def read_entries_month(journal: Journal, year: int, month: int):
-    month_entries = journal.get_entries_month(year, month)
+    month_entries = Journal.load_entries_from(year, month)
+    if debug:
+        print(f"Entries for {year}-{month}: {month_entries}")
     return {f"{year}-{month}": month_entries}
+    # except Exception as e:
+    #     return {"error": str(e)}
+
+
+# Add a new endpoint to submit a daily journal entry
+@app.post("/journalentry/submit")
+async def create_journal_entry(data: JournalEntry, debug=debug):
+    try:
+        # Write to db
+        data.save_to_db()
+
+        response = {
+            "message": data.message,
+            "rating": data.rating,
+            "status": "Success"
+        }
+        if debug:
+            response["type"] = str(type(data))
+            response["dir"] = str(dir(data))
+
+        return response
+    except Exception as e:
+        return {"error": str(e)}
+
+
+# @app.get("/journalentry/{journal_id}")
+# def get_entry():
+#     # TODO: Implement this method
+#     return JournalEntry(entry_id="1", message="Hello, World", rating=5)
+
+
+# @app.get("/items/{item_id}")
+# def read_item(item_id: int, q: str = None):
+#     return {"item_id": item_id, "query": q}
+
+
