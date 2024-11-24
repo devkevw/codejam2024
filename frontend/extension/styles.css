@@ -1,40 +1,165 @@
 * {
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-    font-size: 16px;
-    background: transparent;
-    margin: 0;
-    padding: 0;
+  font-size: 16px;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  font-family: "Parkinsans", "Poppins", Helvetica, sans-serif;
 }
 
 .form-container {
-    width: 100%;
-    max-width: 400px; /* Limits the width */
-    margin: auto; /* Center horizontally and add top margin */
-    padding: 20px; /* Adds spacing inside */
-    background-color: #f9f9f9; /* Light background */
-    /* border-radius: 30px;  */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  }
+  width: 100%;
+  max-width: 400px;
+  /* Limits the width */
+  margin: auto;
+  /* Center horizontally and add top margin */
+  padding: 20px 20px 16px;
+  /* Adds spacing inside */
+  background-color: #f9f9f9;
+  /* Light background */
+  /* border-radius: 30px;  */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
+}
+
+.radio-group {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: .5em;
+}
+
+.radio-group input[type="radio"] {
+  display: none;
+}
 
 textarea {
-  font-family: "Poppins", Arial, Helvetica, sans-serif, sans-serif;
+  /* font-family: "Parkinsans", Arial, Helvetica, sans-serif, sans-serif;
   font-size: 16px;
   resize: none;
+  outline: none;
+  border-radius: 0.5em;
+  padding: 10px; */
+  font-family: "Parkinsans", "Poppins", Helvetica, sans-serif;
+  font-size: 16px;
+  resize: none;
+  border: 2px solid #ccc;
+  /* Default border thickness */
+  border-radius: 0.5em;
+  outline: none;
+  /* Removes default outline */
+  padding: 10px;
+  box-sizing: border-box;
+  /* Ensures consistent sizing */
+  transition: border 0.3s ease;
+  /* Smooth transition */
+  /* width: 100%;  */
 }
 
-form:focus {
-    border-color: black; /* Change to your desired color (e.g., blue) */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Optional glow effect */
-  }
+textarea:focus {
+  border-color: #98CEED;
+  border-width: 2px;
+}
+
+.save-container {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+
+}
+
+/* button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ccc; 
+  color: #666;
+} */
 
 button {
-  font-family: "Poppins", Arial, Helvetica, sans-serif, sans-serif;
+  /* font-family: "Poppins", Arial, Helvetica, sans-serif, sans-serif; */
+  font-family: "Parkinsans", "Poppins", Helvetica, sans-serif;
+  font-size: 16px;
+  padding: 4px 6px;
+  text-align: center;
+  border: 2px solid #ccc;
+  background-color: white;
+  border-radius: 0.5em;
+  box-shadow: 0 2px rgba(153, 153, 153, 0.3);
+  width: 100%;
+
+  cursor: not-allowed;
+
+}
+
+button:enabled {
+  color: black;
+  cursor: pointer;
+  /* Pointer cursor for enabled state */
+  transition: color 0.3s ease;
+  /* Smooth transition */
+}
+
+button:enabled:hover {
+  background-color: #98CEED;
+}
+
+button:enabled:active {
+  box-shadow: 0 0px rgba(153, 153, 153, 0.5);
+  transform: translateY(2px);
+}
+
+.btn {
+  max-width: 45px;
+}
+.save-status {
+  font-size: 12px;
+  min-height: 1.4em;
+  font-style: italic;
+  margin-top: 0.2em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.save-status.info {
+  color: rgba(153, 153, 153, 0.5); 
+  opacity: 1; /* Show the message */
+}
+
+.save-status.success {
+  color: #008000; /* Green for success */
+  opacity: 1;
+}
+
+.save-status.error {
+  color: #ff0000; /* Red for error */
+  opacity: 1;
 }
 
 
+img.btn {
+  filter: invert(96%) sepia(0%) saturate(75%) hue-rotate(168deg) brightness(89%) contrast(85%);
+  transition: all 0.3s ease;
+}
+
+img.btn:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+input[type="radio"]:checked + label img {
+  filter: invert(74%) sepia(40%) saturate(313%) hue-rotate(162deg) brightness(102%) contrast(86%);
+}
+
+#date {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 16pt;
+}
