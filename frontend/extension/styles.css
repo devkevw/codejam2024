@@ -63,7 +63,7 @@ textarea {
 }
 
 textarea:focus {
-  border-color: #89CFF0;
+  border-color: #98CEED;
   border-width: 2px;
 }
 
@@ -108,7 +108,7 @@ button:enabled {
 }
 
 button:enabled:hover {
-  background-color: #89CFF0;
+  background-color: #98CEED;
 }
 
 button:enabled:active {
