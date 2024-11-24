@@ -13,8 +13,12 @@ class Journal():
         if not os.path.exists(file_path):
             return None
         else:
-            msg = JournalEntry.get_message_from(file_path)
-            return "" if not msg else msg
+            je_data = JournalEntry.get_message_from(file_path)
+            return {
+                "message": je_data["message"],
+                "rating": je_data["rating"],
+                "status": "Success"
+            }
     
     @classmethod
     def load_entries_from(cls, year: int, month: int):
