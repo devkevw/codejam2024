@@ -7,7 +7,7 @@ const theme = createTheme({
       main: '#98CEED', // light blue
     },
     secondary: {
-      main: '#438fc2', // Orange
+      main: '#438fc2', // darker blue
     },
     background: {
       default: '#f9f9f9', // Light gray
@@ -19,7 +19,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Arial, sans-serif', // Global font
+    fontFamily: 'Parkinsans, sans-serif', // Global font
     h1: {
       fontSize: '2.5rem',
       fontWeight: 600,
