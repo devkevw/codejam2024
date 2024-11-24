@@ -6,14 +6,14 @@
   "action": {
     "default_popup": "index.html",
     "default_icon": {
-      "16": "images/agenda_16.png",
-      "48": "images/agenda_32.png",
-      "128": "images/agenda_128.png"
+      "16": "images/icons/365Days.png",
+      "48": "images/icons/365Days.png",
+      "128": "images/icons/365Days.png"
     }
   },
   "icons": {
-    "16": "images/agenda_16.png",
-    "48": "images/agenda_32.png",
-    "128": "images/agenda_128.png"
+    "16": "images/icons/365Days.png",
+    "48": "images/icons/365Days.png",
+    "128": "images/icons/365Days.png"
   }
 }
