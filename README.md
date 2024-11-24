@@ -29,6 +29,7 @@ foster mental wellness and mindfulness over time.
 - **Cross-Platform Support**: Expand to include mobile and web versions for broader accessibility.
 - **AI Integration**: Analyse journal entries to provide insights or suggest mood-boosting activities.
 - **Sharing**: Enable users to add friends and share entries with friends or join groups for added motivation and support.
+- **Data Persistance**: Enable Docker Volumes to ensure data persistance when rebuilding the backend container.
 
 ## Prerequisites
 1. Install [Docker](https://docs.docker.com/engine/install/)
