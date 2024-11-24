@@ -22,25 +22,34 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (event) => {
     event.preventDefault(); // Prevent form reload
     setSaveStatus("Saving...", "info");
-
+  
     // Ensure that the "Saving..." message stays for at least 1 second
     await new Promise(resolve => setTimeout(resolve, 1000));
-
+  
     const messageValue = textarea.value.trim();
     const ratingValue = document.querySelector('input[name="mood"]:checked').value;
-
+  
     try {
-      const response = await fetchWithTimeout('http://localhost:8000/journalentry/daily', {
+      // Get current year, month, and day as integers
+      const { year, month, day } = getCurrentDateAsInt();
+      const body = JSON.stringify({
+        message: messageValue,
+        rating: ratingValue,
+        year: year,
+        month: month,
+        day: day
+      });
+  
+      console.log("Request Body:", body); // Log the request body
+  
+      const response = await fetchWithTimeout('http://localhost:8000/journalentry/submit', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json' // Ensure proper Content-Type
         },
-        body: JSON.stringify({
-          message: messageValue,
-          rating: ratingValue,
-        }),
+        body: body,
       }, 5000); // 5-second timeout
-
+  
       if (response.ok) {
         const responseData = await response.json();
         setSaveStatus("Save successful.", "success");
@@ -57,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       console.error("Error occurred or timeout exceeded:", error);
     }
-
+  
     // Clear the status after 3 seconds
     setTimeout(() => {
       saveStatus.textContent = "";
@@ -94,5 +103,14 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     return today.toLocaleDateString('en-US', options);
+  }
+
+  function getCurrentDateAsInt() {
+    const today = new Date();
+    return {
+      year: today.getFullYear(),
+      month: today.getMonth() + 1,
+      day: today.getDate()
+    };
   }
 });
