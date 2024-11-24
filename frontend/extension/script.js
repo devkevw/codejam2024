@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          user_id: userIdValue, // Ensure userIdValue is present or replace with appropriate value
           message: messageValue,
           rating: ratingValue,
         }),
