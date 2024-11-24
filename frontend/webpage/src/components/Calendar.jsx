@@ -74,7 +74,7 @@ const Calendar = () => {
         <Button variant="contained" onClick={handlePrev}>
           Prev
         </Button>
-        <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
+        <Typography variant="h5" >
           {format(currentMonth, 'MMMM yyyy')}
         </Typography>
         <Button variant="contained" onClick={handleNext}>
@@ -86,7 +86,7 @@ const Calendar = () => {
       <Grid container spacing={1}>
         {daysOfWeek.map((day) => (
           <Grid item xs={1.71} key={day}>
-            <Typography align="center" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+            <Typography align="center" variant="subtitle1" >
               {day}
             </Typography>
           </Grid>
@@ -105,8 +105,13 @@ const Calendar = () => {
               onClick={
                 isSameMonth(day, currentMonth) || viewMode === 'week'
                   ? () => {
-                      setSelectedDate(day);
-                      setCurrentMonth(startOfMonth(day)); // Update currentMonth to the selected date's month
+                      // Toggle the selected date
+                      if (isSameDay(day, selectedDate)) {
+                        setSelectedDate(null); // Unhighlight if the same date is clicked
+                      } else {
+                        setSelectedDate(day); // Highlight the new date
+                        setCurrentMonth(startOfMonth(day)); // Update currentMonth to the selected date's month
+                      }
                     }
                   : undefined
               }
@@ -134,6 +139,7 @@ const Calendar = () => {
             >
               <Typography variant="body1">{format(day, 'd')}</Typography>
             </Box>
+
           </Grid>
         ))}
       </Grid>

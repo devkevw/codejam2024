@@ -22,12 +22,24 @@ const theme = createTheme({
     fontFamily: 'Parkinsans, sans-serif', // Global font
     h1: {
       fontSize: '2.5rem',
-      fontWeight: 600,
+      fontWeight: 400,
+
+    }, 
+    h5: {
+        fontWeight: 500,
 
     },
+    h6: {
+        fontWeight: 500,
+    },
+
     body1: {
       fontSize: '1rem',
       lineHeight: 1.5,
+    },
+    subtitle1: {
+        fontWeight:500,
+
     },
     button: {
       textTransform: 'none',
