@@ -6,23 +6,9 @@ services:
     container_name: backend_container
     ports:
       - "8000:8000"
-    # depends_on:
-    #   - db
-    # environment:
-    #   DATABASE_URL: postgresql://user:password@db:5432/mydb
 
   # frontend:
   #   build:
-  #     context: ./frontend
+  #     context: ./frontend/webpage
   #   ports:
   #     - "3000:80"
-
-  # db:
-  #   build:
-  #     context: ./database
-  #   environment:
-  #     POSTGRES_USER: user
-  #     POSTGRES_PASSWORD: password
-  #     POSTGRES_DB: mydb
-  #   ports:
-  #     - "5432:5432"
