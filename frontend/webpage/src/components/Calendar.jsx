@@ -36,9 +36,9 @@ const Calendar = () => {
     const month = format(date, 'M'); // 1-based month
     const day = format(date, 'd'); // Day of the month
     try {
-      const response = await fetch(`http://localhost:8000/journalentry?year=${year}&month=${month}&date=${day}`);
+      const response = await fetch(`http://localhost:8000/journalentry?year=${year}&month=${month}&day=${day}`);
       const data = await response.json();
-      setJournalMessage(data.message || 'No journal made on this day 😔');
+      setJournalMessage(data?.message || 'No journal made on this day 😔');
     } catch (error) {
       console.error('Error fetching journal entry:', error);
       setJournalMessage('Error fetching journal entry');
