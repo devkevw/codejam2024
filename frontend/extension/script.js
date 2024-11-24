@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
       const messageValue = textarea.value.trim();
       const ratingValue = document.querySelector('input[name="mood"]:checked').value;
+      console.log("ratingValue:", ratingValue);
   
       try {
         // Get current year, month, and day as integers

@@ -25,7 +25,7 @@ import JournalCard from './JournalCard';
 const ratingInts = {
   "VERY BAD": 5,
   "BAD": 4,
-  "OK": 3,
+  "OKAY": 3,
   "GOOD": 2,
   "VERY GOOD": 1
 }
