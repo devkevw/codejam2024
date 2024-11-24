@@ -31,7 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const ratingValue = document.querySelector('input[name="mood"]:checked').value;
 
     try {
-      const response = await fetchWithTimeout('http://localhost:8000/journalentry/daily', {
+      // Get current year, month, and day as integers
+      const { year, month, day } = getCurrentDateAsInt();
+
+
+      const response = await fetchWithTimeout('http://localhost:8000/journalentry/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,6 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify({
           message: messageValue,
           rating: ratingValue,
+          year: year,
+          month: month,
+          day: day
         }),
       }, 5000); // 5-second timeout
 
@@ -95,5 +102,14 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     return today.toLocaleDateString('en-US', options);
+  }
+
+  function getCurrentDateAsInt() {
+    const today = new Date();
+    return {
+      year: today.getFullYear(),
+      month: today.getMonth() + 1,
+      day: today.getDate()
+    };
   }
 });
