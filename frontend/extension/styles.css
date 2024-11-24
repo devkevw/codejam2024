@@ -158,3 +158,8 @@ input[type="radio"]:checked + label img {
   filter: invert(74%) sepia(40%) saturate(313%) hue-rotate(162deg) brightness(102%) contrast(86%);
 }
 
+#date {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 16pt;
+}
