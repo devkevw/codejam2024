@@ -29,28 +29,33 @@ foster mental wellness and mindfulness over time.
 - **Cross-Platform Support**: Expand to include mobile and web versions for broader accessibility.
 - **AI Integration**: Analyse journal entries to provide insights or suggest mood-boosting activities.
 - **Sharing**: Enable users to add friends and share entries with friends or join groups for added motivation and support.
-- **Data Persistance**: Enable Docker Volumes to ensure data persistance when rebuilding the backend container.
+- **Data Persistence**: Enable Docker Volumes to ensure data persistence when rebuilding the backend container.
 
 ## Prerequisites
-1. Install [Docker](https://docs.docker.com/engine/install/)
-2. Clone this GitHub project
+1. Install [Docker](https://docs.docker.com/engine/install/).
+2. Clone this GitHub project.
 
 ## Build Project
 ### First time deployment
-1. Open up docker desktop
-2. Open up a terminal (like bash or zsh)
-3. Navigate to project directory
-4. Run `scripts/start.sh`
+1. Open up docker desktop.
+2. Open up a terminal (like bash or zsh).
+3. Navigate to the project directory.
+4. Run `scripts/start.sh`.
    1. `start.sh` will create and start both the backend and the frontend.
-5. Install the chrome extension on Google Chrome
+5. Install the Chrome extension on Google Chrome.
+   1. Open 'chrome://extensions/' in Google Chrome.
+   2. Enable Developer mode.
+   3. Click 'Load unpacked'.
+   4. Navigate to the folder containing the source code. Select and upload the folder `frontend/extension`.
+   5. You should now see the extension on your Chrome extensions page.
 
 ### Subsequent deployments
-1) Open up Docker desktop
-2) Navigate to `Containers`
-3) Hit play on the `codejam2024` container
+1) Open up Docker desktop.
+2) Navigate to `Containers`.
+3) Hit play on the `codejam2024` container.
 
 ### To pause a deployment
-1) Hit pause on the `codejam2024` container
+1) Hit pause on the `codejam2024` container.
 
 ## Contact Information
 - [Daniel Cho](https://github.com/daniel-heemang)
