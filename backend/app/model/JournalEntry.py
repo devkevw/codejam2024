@@ -46,7 +46,7 @@ class JournalEntry(BaseModel):
             }
             json.dump(data_to_save, f, indent=4, default=str)  # Use default=str for datetime serialization
         
-        print(f"Journal entry saved to {file_path}")
+        # print(f"Journal entry saved to {file_path}")
     
     
     @classmethod
@@ -54,11 +54,11 @@ class JournalEntry(BaseModel):
         """Load a journal entry from a JSON file."""
         with open(file_path, "r") as f:
             data = json.load(f)
-        print(f"Data from {file_path}: {data}")
+        # print(f"Data from {file_path}: {data}")
         return data
 
     @classmethod
-    def get_message_from(cls, file_path: str, debug=True):
+    def get_message_from(cls, file_path: str, debug=False):
         """Load a journal entry from a JSON file."""
         with open(file_path, "r") as f:
             data = json.load(f)

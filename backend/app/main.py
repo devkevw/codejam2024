@@ -26,7 +26,7 @@ def read_root():
 def read_entries_month(
     year: Optional[int] = Query(..., description="The year for the journal entries"),
     month: Optional[int] = Query(..., ge=1, le=12, description="The month (1-12) for the journal entries"),
-    debug: bool = True
+    debug: bool = debug
 ):
     # try:
     if year is None or month is None:

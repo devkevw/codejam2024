@@ -32,7 +32,7 @@ class Journal():
             # Load all entries from the folder
             for file_name in os.listdir(folder_name):
                 
-                print(f"Checking file: {file_name}")
+                # print(f"Checking file: {file_name}")
                 
                 # Skip any non-JSON files
                 if not file_name.endswith(".json"):
