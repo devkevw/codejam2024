@@ -33,7 +33,7 @@ const theme = createTheme({
       textTransform: 'none',
     },
   },
-  
+  shadows: Array(25).fill('none'),
 });
 
 export default theme;
