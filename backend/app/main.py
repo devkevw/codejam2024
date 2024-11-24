@@ -22,7 +22,6 @@ async def submit_entry(data: JournalEntry, debug=True):
 
     response = {
         "message": data.message,
-        "user_id": data.user_id,
         "rating": data.rating,
         "status": "Success"
     }

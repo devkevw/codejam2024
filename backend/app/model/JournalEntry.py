@@ -5,7 +5,7 @@ import datetime as dt
 
 
 class JournalEntry(BaseModel):
-    entry_id: str
+    id: str
     message: str
     rating: int = Field(..., ge=0, le=5, description="Rating should be between 0 and 5")
     timestamp: dt.datetime = Field(default_factory=dt.datetime.now)

@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from .JournalEntry import JournalEntry
-import pandas as pd
 import datetime as dt
+
 app = FastAPI()
+
 class Journal(BaseModel):
-    user_id: str
     entries: list
     state: str = None
     # def __init__(self, user_id):
@@ -27,12 +27,11 @@ class Journal(BaseModel):
         self.entries.append(entry)
 
     def get_all_entries(self):
-        """Return a list of all entries for the user."""
         return self.entries
 
     def get_month_entries(self, year, month):
         """
-        Return a list of all entries for the user in a given month.
+        Return a list of all entries in a given month.
         :param year: int: The year to filter by.
         :param month: int: The month to filter by.
         :return: list: A list of entries for the given month and year.
