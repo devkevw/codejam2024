@@ -22,6 +22,15 @@ import {
 } from 'date-fns';
 import JournalCard from './JournalCard';
 
+const ratingInts = {
+  "VERY BAD": 5,
+  "BAD": 4,
+  "OK": 3,
+  "GOOD": 2,
+  "VERY GOOD": 1
+}
+const ratingColors = ['#ffe5ec', '#ffc2d1', '#ffb3c6', '#ff8fab', '#fb6f92'];
+
 const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
@@ -62,6 +71,32 @@ const Calendar = () => {
       return eachDayOfInterval({ start: firstDayOfCalendar, end: lastDayOfCalendar });
     }
   };
+
+    // Get the background color for a specific date based on its rating
+    const getBackgroundColor = (date) => {
+      const dateKey = format(date, 'yyyy-MM-dd');
+      console.log("Date:", dateKey);
+      if (isSameDay(date, selectedDate)) {
+        return 'primary.main'; // Highlight selected cell in blue
+      } 
+
+      const ratingColor = (dateKey) => {
+        const entry = journalData[dateKey];
+        // console.log("Entry:", entry);
+        console.log(`Journal data for ${dateKey}:\n ${JSON.stringify(entry)}`);
+        if (entry && entry.rating) {
+          const ratingValue = ratingInts[entry.rating];
+          if (ratingValue) {
+            return ratingColors[ratingValue - 1]; // Map rating to color
+          }
+        }
+        return 'background.paper'; // Default white for no rating
+      };
+
+      return isSameMonth(date, currentMonth)
+        ? ratingColor(dateKey)
+        : 'grey.200';
+    };
 
   // Handle the previous button click
   const handlePrev = () => {
@@ -145,11 +180,7 @@ const Calendar = () => {
                   textAlign: 'center',
                   padding: 2,
                   borderRadius: 2,
-                  backgroundColor: isSameDay(day, selectedDate)
-                    ? 'primary.main'
-                    : isSameMonth(day, currentMonth)
-                    ? 'background.paper'
-                    : 'grey.200',
+                  backgroundColor: getBackgroundColor(day), // Dynamic background color
                   color: isSameDay(day, selectedDate) ? 'white' : 'text.primary',
                   cursor: isSameMonth(day, currentMonth) || viewMode === 'week' ? 'pointer' : 'not-allowed',
                   '&:hover': {
