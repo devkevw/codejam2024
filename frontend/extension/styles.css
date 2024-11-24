@@ -23,6 +23,10 @@ body {
 
   }
 
+.radio-group input[type="radio"] {
+  display: none;
+}
+
 textarea {
   /* font-family: "Parkinsans", Arial, Helvetica, sans-serif, sans-serif;
   font-size: 16px;

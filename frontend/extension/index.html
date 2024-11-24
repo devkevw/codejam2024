@@ -19,15 +19,41 @@
   <div class="form-container">
       <form>
         <label for="textbox"></label>
-        <textarea id="textbox" placeholder="How are you feeling today?" rows="8" cols="20" minlength="1" maxlength="160"
-          required></textarea>
-        <input type="radio" id="sad" name="mood" value="SAD">
-        <label for="sad">Sad</label>
-        <input type="radio" id="okay" name="mood" value="OKAY">
-        <label for="okay">Okay</label>
-        <input type="radio" id="happy" name="mood" value="HAPPY">
-        <label for="happy">Happy</label>
-        <br>
+        <textarea id="textbox" placeholder="How are you feeling today?" rows="8" cols="32" minlength="1" maxlength="160"
+          required>
+        </textarea>
+        <div class="radio-group">
+          <!-- Very Bad -->
+          <input type="radio" id="very bad" name="mood" value="VERY BAD">
+          <label for="very bad" class="">
+            <img src="./images/Very Bad.png" alt="Very Bad Mood">
+          </label>
+
+          <!-- Bad -->
+          <input type="radio" id="bad" name="mood" value="BAD">
+          <label for="bad" class="">
+            <img src="./images/Bad.png" alt="Bad Mood">
+          </label>
+
+          <!-- Okay -->
+          <input type="radio" id="okay" name="mood" value="OKAY">
+          <label for="okay" class="">
+            <img src="./images/Okay.png" alt="Okay Mood">
+          </label>
+
+          <!-- Good -->
+          <input type="radio" id="good" name="mood" value="GOOD">
+          <label for="good" class="">
+            <img src="./images/Good.png" alt="Good Mood">
+          </label>
+
+          <!-- Very Good -->
+          <input type="radio" id="very good" name="mood" value="VERY GOOD">
+          <label for="very good" class="">
+            <img src="./images/Very Good.png" alt="Very Good Mood">
+          </label>
+        </div>
+
         <button>Save</button>
       </form>
   </div>
