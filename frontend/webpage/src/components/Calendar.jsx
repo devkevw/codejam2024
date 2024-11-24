@@ -43,25 +43,50 @@ const Calendar = () => {
     }
   };
 
+  const fetchData = async (date) => {
+    // Fetches data required for the calendar month
+  try {
+    const year = date.getFullYear(); // Extract the year
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Extract and zero-pad the month
+    //ZERO PADDING THE MONTH MIGHT THROW OFF OUR CODE IN THE BACKEND
+
+    // Construct the URL
+    const response = await fetch(`/journalentry/${year}/${month}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch data');
+    }
+    const data = await response.json();
+    console.log('Fetched data:', data); // Handle data as needed
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
   // Handle the previous button click
-  const handlePrev = () => {
+  const handlePrev = async () => {
     if (viewMode === 'month') {
-      setCurrentMonth(subMonths(currentMonth, 1));
+      const newMonth = subMonths(currentMonth, 1);
+      setCurrentMonth(newMonth);
+      await fetchData(newMonth); // Fetch data for the new month
     } else {
       const newDate = subDays(selectedDate, 7); // Move one week back
       setSelectedDate(newDate);
       setCurrentMonth(startOfMonth(newDate)); // Update currentMonth to the new date's month
+      await fetchData(startOfWeek(newDate)); // Fetch data for the new week
     }
   };
 
   // Handle the next button click
-  const handleNext = () => {
+  const handleNext = async () => {
     if (viewMode === 'month') {
-      setCurrentMonth(addMonths(currentMonth, 1));
+      const newMonth = addMonths(currentMonth, 1);
+      setCurrentMonth(newMonth);
+      await fetchData(newMonth); // Fetch data for the new month
     } else {
       const newDate = addDays(selectedDate, 7); // Move one week forward
       setSelectedDate(newDate);
       setCurrentMonth(startOfMonth(newDate)); // Update currentMonth to the new date's month
+      await fetchData(startOfWeek(newDate)); // Fetch data for the new week
     }
   };
 
