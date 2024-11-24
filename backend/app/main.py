@@ -61,10 +61,14 @@ async def create_journal_entry(data: JournalEntry, debug=debug):
         return {"error": str(e)}
 
 
-# @app.get("/journalentry/{journal_id}")
-# def get_entry():
-#     # TODO: Implement this method
-#     return JournalEntry(entry_id="1", message="Hello, World", rating=5)
+@app.get("/journalentry")
+def get_entry(
+    year: Optional[int] = Query(..., description="The year for the journal entries"),
+    month: Optional[int] = Query(..., ge=1, le=12, description="The month (1-12) for the journal entries"),
+    day: Optional[int] = Query(..., ge=1, le=31, description="The month (1-31) for the journal entries"),
+    debug: bool = False
+):
+    return Journal.load_entry_from(year, month, day)
 
 
 # @app.get("/items/{item_id}")

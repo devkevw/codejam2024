@@ -2,19 +2,23 @@ import os
 from .JournalEntry import JournalEntry
 
 class Journal():
-    # @classmethod
-    # def load_entry_from_file(cls, year: int, month: int, day: int):
-    #     folder_name = f"{year}-{month}"
-    #     file_name = f"{year}-{month}-{day}.json"
-    #     file_path = os.path.join(folder_name, file_name)
+    @classmethod
+    def load_entry_from(cls, year: int, month: int, day: int):
+        folder_name = f"{year}-{month}"
+        file_name = f"{year}-{month}-{day}.json"
+        file_path = os.path.join(folder_name, file_name)
         
-    #     """Load a journal entry from a JSON file."""
-    #     # Check if the file exists
-    #     if not os.path.exists(file_path):
-    #         return None
-    #     else:
-    #         je = JournalEntry.from_file(file_path)
-    #         return je
+        """Load a journal entry from a JSON file."""
+        # Check if the file exists
+        if not os.path.exists(file_path):
+            return None
+        else:
+            je_data = JournalEntry.get_message_from(file_path)
+            return {
+                "message": je_data["message"],
+                "rating": je_data["rating"],
+                "status": "Success"
+            }
     
     @classmethod
     def load_entries_from(cls, year: int, month: int):
