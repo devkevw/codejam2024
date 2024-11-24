@@ -19,7 +19,7 @@
 
 <body>
   <div class="form-container">
-    <form>
+    <form id="moodForm">
       <label for="textbox"></label>
       <textarea id="textbox" placeholder="How are you feeling today?" rows="8" cols="32" minlength="1" maxlength="160" required></textarea>
       <div class="radio-group">
@@ -56,8 +56,11 @@
 
 
       <br>
-
-      <button type="submit" id="submitButton" disabled>Save</button>
+      <div>
+        <button type="submit" id="submitButton" disabled>Save</button>
+        <div class="save-status" id="saveStatus"></div>
+      </div>
+      
 
 
     </form>
