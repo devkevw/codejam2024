@@ -57,10 +57,10 @@ class JournalEntry(BaseModel):
         print(f"Data from {file_path}: {data}")
         return data
 
-    # @classmethod
-    # def from_file(cls, file_path: str):
-    #     """Load a journal entry from a JSON file."""
-    #     with open(file_path, "r") as f:
-    #         data = json.load(f)
+    @classmethod
+    def get_message_from(cls, file_path: str):
+        """Load a journal entry from a JSON file."""
+        with open(file_path, "r") as f:
+            data = json.load(f)
         
-    #     return cls(**data)
+        return data.get("message", None)
