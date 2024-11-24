@@ -162,4 +162,5 @@ input[type="radio"]:checked + label img {
   margin-top: 0;
   margin-bottom: 8px;
   font-size: 16pt;
+  font-weight: 500;
 }
