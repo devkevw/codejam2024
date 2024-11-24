@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Grid,
   Typography,
@@ -25,25 +25,28 @@ import JournalCard from './JournalCard';
 const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
-  const [journalMessage, setJournalMessage] = useState(''); // Message fetched from the backend
+  const [journalData, setJournalData] = useState({}); // Stores journal data for the month
   const [viewMode, setViewMode] = useState('month'); // 'month' or 'week'
 
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-  // Fetch journal message for a specific date
-  const fetchJournalMessage = async (date) => {
-    const year = format(date, 'yyyy');
-    const month = format(date, 'M'); // 1-based month
-    const day = format(date, 'd'); // Day of the month
-    try {
-      const response = await fetch(`http://localhost:8000/journalentry?year=${year}&month=${month}&day=${day}`);
-      const data = await response.json();
-      setJournalMessage(data?.message || 'No journal made on this day 😔');
-    } catch (error) {
-      console.error('Error fetching journal entry:', error);
-      setJournalMessage('Error fetching journal entry');
-    }
-  };
+  // Fetch journal data for the month whenever `currentMonth` changes
+  useEffect(() => {
+    const fetchJournalData = async () => {
+      const year = format(currentMonth, 'yyyy');
+      const month = format(currentMonth, 'M'); // 1-based month
+      try {
+        const response = await fetch(`http://localhost:8000/journal?year=${year}&month=${month}`);
+        const data = await response.json();
+        setJournalData(data[`${year}-${month}`] || {}); // Save journal data for the month
+      } catch (error) {
+        console.error('Error fetching journal data:', error);
+        setJournalData({}); // Reset journal data on error
+      }
+    };
+
+    fetchJournalData();
+  }, [currentMonth]);
 
   // Determine the days to display based on the view mode
   const getDaysToDisplay = () => {
@@ -84,6 +87,13 @@ const Calendar = () => {
 
   const days = getDaysToDisplay();
 
+  // Get the journal message and rating for the selected date
+  const getJournalEntry = (date) => {
+    const dateKey = format(date, 'yyyy-MM-dd');
+    const entry = journalData[dateKey] || {};
+    return entry.message || 'No journal made on this day 😔';
+  };
+
   return (
     <>
       <Paper elevation={3} sx={{ padding: 3, borderRadius: 2 }}>
@@ -122,15 +132,11 @@ const Calendar = () => {
               <Box
                 onClick={
                   isSameMonth(day, currentMonth) || viewMode === 'week'
-                    ? async () => {
+                    ? () => {
                         if (isSameDay(day, selectedDate)) {
-                          // If the same date is clicked, unselect it
-                          setSelectedDate(null);
-                          setJournalMessage(''); // Clear the journal message
+                          setSelectedDate(null); // Unselect the date
                         } else {
-                          // Set selected date and fetch journal entry
-                          setSelectedDate(day);
-                          await fetchJournalMessage(day);
+                          setSelectedDate(day); // Highlight the new date
                         }
                       }
                     : undefined
@@ -163,10 +169,12 @@ const Calendar = () => {
       </Paper>
 
       {/* Journal Card */}
-      <JournalCard
-        date={selectedDate ? format(selectedDate, 'MMMM d, yyyy') : null}
-        message={journalMessage}
-      />
+      {selectedDate && (
+        <JournalCard
+          date={format(selectedDate, 'MMMM d, yyyy')}
+          message={getJournalEntry(selectedDate)} // Get the message from journalData
+        />
+      )}
     </>
   );
 };
