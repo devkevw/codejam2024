@@ -2,7 +2,7 @@
 ## About
 **365 Days** is a digital wellness journal designed to help users log and reflect on their emotional journeys. Available
 as both a Chrome extension and a webpage, the platform encourages daily emotional tracking and journaling in a simple, 
-user-friendly interface. By empowering users to monitor and revisit their emotional patterns, **365 Days** aims to 
+user-friendly interface. By empowering users to monitor and revisit their emotional patterns, 365 Days aims to 
 foster mental wellness and mindfulness over time.
 
 ## Features
