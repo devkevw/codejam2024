@@ -76,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Fetch and populate the form with the current day's entry if it exists
     async function fetchJournalEntryForToday() {
+        console.log("Running fectchJournalEntries.")
       try {
         const { year, month, day } = getCurrentDateAsInt();
   
