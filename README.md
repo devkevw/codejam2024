@@ -1,4 +1,4 @@
-# CodeJam 14 (2024)
+# CodeJam 14 Hackathon: 365 Days
 ## About
 **365 Days** is a digital wellness journal designed to help users log and reflect on their emotional journeys. Available
 as both a Chrome extension and a webpage, the platform encourages daily emotional tracking and journaling in a simple, 
