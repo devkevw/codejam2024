@@ -1,19 +1,19 @@
 {
-    "manifest_version": 3,
-    "name": "365 Days",
-    "description": "Insert description.",
-    "version": "1.0",
-    "action": {
-      "default_popup": "index.html",
-      "default_icon": {
-        "16": "images/agenda_16.png",
-        "48": "images/agenda_32.png",
-        "128": "images/agenda_128.png"
-    }
-    },
-    "icons": {
+  "manifest_version": 3,
+  "name": "365 Days",
+  "description": "A digital journal that lets users log their feelings and gives mood insights or calming tips based on their entries.",
+  "version": "1.0",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
       "16": "images/agenda_16.png",
       "48": "images/agenda_32.png",
       "128": "images/agenda_128.png"
     }
+  },
+  "icons": {
+    "16": "images/agenda_16.png",
+    "48": "images/agenda_32.png",
+    "128": "images/agenda_128.png"
+  }
 }
