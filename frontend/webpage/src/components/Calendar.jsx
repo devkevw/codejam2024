@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { 
-  Grid, 
-  Typography, 
-  Button, 
-  Paper, 
-  Box 
+import {
+  Grid,
+  Typography,
+  Button,
+  Paper,
+  Box
 } from '@mui/material';
 import {
   startOfMonth,
@@ -17,7 +17,6 @@ import {
   format,
   isSameDay,
   isSameMonth,
-  set,
   addDays,
   subDays,
 } from 'date-fns';
@@ -25,9 +24,8 @@ import {
 const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [journalEntry, setJournalEntry] = useState('');
   const [viewMode, setViewMode] = useState('month'); // 'month' or 'week'
-  
+
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   // Determine the days to display based on the view mode
@@ -37,7 +35,6 @@ const Calendar = () => {
       const lastDayOfWeek = endOfWeek(selectedDate);
       return eachDayOfInterval({ start: firstDayOfWeek, end: lastDayOfWeek });
     } else {
-      // Calculate the days to display in the calendar grid
       const firstDayOfMonth = startOfMonth(currentMonth);
       const lastDayOfMonth = endOfMonth(currentMonth);
       const firstDayOfCalendar = startOfWeek(firstDayOfMonth);
@@ -48,18 +45,26 @@ const Calendar = () => {
 
   // Handle the previous button click
   const handlePrev = () => {
-    viewMode === 'month' ? 
-      setCurrentMonth(subMonths(currentMonth, 1)) : 
-      setSelectedDate(subDays(selectedDate, 7));
+    if (viewMode === 'month') {
+      setCurrentMonth(subMonths(currentMonth, 1));
+    } else {
+      const newDate = subDays(selectedDate, 7); // Move one week back
+      setSelectedDate(newDate);
+      setCurrentMonth(startOfMonth(newDate)); // Update currentMonth to the new date's month
+    }
   };
 
   // Handle the next button click
   const handleNext = () => {
-    viewMode === 'month' ? 
-      setCurrentMonth(addMonths(currentMonth, 1)) : 
-      setSelectedDate(addDays(selectedDate, 7));
-  }
-  
+    if (viewMode === 'month') {
+      setCurrentMonth(addMonths(currentMonth, 1));
+    } else {
+      const newDate = addDays(selectedDate, 7); // Move one week forward
+      setSelectedDate(newDate);
+      setCurrentMonth(startOfMonth(newDate)); // Update currentMonth to the new date's month
+    }
+  };
+
   const days = getDaysToDisplay();
 
   return (
@@ -97,17 +102,33 @@ const Calendar = () => {
             key={day.toString()}
           >
             <Box
-              onClick={() => setSelectedDate(day)}
+              onClick={
+                isSameMonth(day, currentMonth) || viewMode === 'week'
+                  ? () => {
+                      setSelectedDate(day);
+                      setCurrentMonth(startOfMonth(day)); // Update currentMonth to the selected date's month
+                    }
+                  : undefined
+              }
               sx={{
                 textAlign: 'center',
                 padding: 2,
                 borderRadius: 2,
-                backgroundColor: isSameDay(day, selectedDate)
-                  ? 'primary.main' : isSameMonth(day, currentMonth)
-                  ? 'background.paper' : 'grey.200',
+                backgroundColor:
+                  isSameDay(day, selectedDate)        // Is this the selected day?
+                    ? 'primary.main'                  // Highlight the selected day
+                    : isSameMonth(day, currentMonth)  // Is this day in the current month?
+                      ? 'background.paper'            // Show it with normal background
+                      : 'grey.200',                   // Otherwise, grey it out
                 color: isSameDay(day, selectedDate) ? 'white' : 'text.primary',
-                cursor: 'pointer', '&:hover': {
-                  backgroundColor: isSameDay(day, selectedDate) ? 'primary.dark' : 'grey.300',
+                cursor: isSameMonth(day, currentMonth) || viewMode === 'week' ? 'pointer' : 'not-allowed',
+                '&:hover': {
+                  backgroundColor:
+                    isSameDay(day, selectedDate)
+                      ? 'primary.dark'
+                      : isSameMonth(day, currentMonth)
+                        ? 'grey.300'
+                        : 'grey.200', // Prevent hover effect for non-current month days
                 },
               }}
             >
