@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from .model.JournalEntry import JournalEntry
+from .model.Journal import Journal
 
 app = FastAPI()
 
@@ -39,3 +41,13 @@ def read_root():
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: str = None):
     return {"item_id": item_id, "query": q}
+
+@app.get("/journalentry/{journal_id}")
+def get_entry():
+    # TODO: Implement this method
+    return JournalEntry(entry_id="1", message="Hello, World", rating=5)
+
+@app.get("/journalentry/{year}/{month}")
+def read_entries_month(journal: Journal, year: int, month: int):
+    month_entries = journal.get_entries_month(year, month)
+    return {f"{year}-{month}": month_entries}
