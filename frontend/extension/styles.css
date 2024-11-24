@@ -116,3 +116,27 @@ button:enabled:active {
 .btn {
   max-width: 45px;
 }
+.save-status {
+  /* display: none; */
+  font-style: italic;
+  margin-top: 0.5em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.save-status.info {
+  color: rgba(153, 153, 153, 0.5); 
+  opacity: 1; /* Show the message */
+}
+
+.save-status.success {
+  color: #008000; /* Green for success */
+  opacity: 1;
+}
+
+.save-status.error {
+  color: #ff0000; /* Red for error */
+  opacity: 1;
+}
+
+

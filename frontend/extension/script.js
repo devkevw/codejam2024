@@ -40,21 +40,74 @@ document.getElementById('submitButton').addEventListener('click', async () => {
 
 
 // to edit default message 
-const textarea = document.getElementById('textbox');
-const radioButtons = document.querySelectorAll('input[name="mood"]');
-const submitButton = document.getElementById('submitButton');
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("moodForm");
+    const submitButton = document.getElementById("submitButton");
+  
+    form.addEventListener("submit", (event) => {
+      event.preventDefault(); // Prevent form from clearing and reloading
+      // You can handle the form data here if needed, e.g., send it to a server.
+    });
+  
+    // Enable the button dynamically (example logic for demonstration)
+    const textarea = document.getElementById("textbox");
+    const radios = document.querySelectorAll('input[name="mood"]');
+  
+    textarea.addEventListener("input", () => toggleButtonState());
+    radios.forEach((radio) => {
+      radio.addEventListener("change", () => toggleButtonState());
+    });
+  
+    function toggleButtonState() {
+      const isTextEntered = textarea.value.trim().length > 0;
+      const isRadioSelected = Array.from(radios).some((radio) => radio.checked);
+      submitButton.disabled = !(isTextEntered && isRadioSelected);
+    }
+  });
+  
 
-function validateForm() {
-  const isTextValid = textarea.value.trim().length > 0; // At least 1 character
-  const isRadioSelected = Array.from(radioButtons).some(radio => radio.checked); // At least 1 radio selected
-
-  // Enable the button if both conditions are met
-  submitButton.disabled = !(isTextValid && isRadioSelected);
-}
-
-// Attach event listeners to dynamically validate
-textarea.addEventListener('input', validateForm);
-radioButtons.forEach(radio => radio.addEventListener('change', validateForm));
-
-// Initial validation check on page load
-validateForm();
+//   save status
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("moodForm");
+    const saveStatus = document.getElementById("saveStatus");
+  
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault(); // Prevent form from reloading
+      setSaveStatus("Saving...", "info"); // Show a temporary saving status
+  
+      try {
+        // Simulate a save operation (replace this with actual save logic, e.g., fetch())
+        const isSuccessful = await mockSaveOperation();
+  
+        if (isSuccessful) {
+          setSaveStatus("Save successful.", "success");
+        } else {
+          setSaveStatus("Save unsuccessful.", "error");
+        }
+      } catch (error) {
+        setSaveStatus("Save unsuccessful.", "error");
+      }
+  
+      // Clear the status after 3 seconds
+      setTimeout(() => {
+        saveStatus.textContent = "";
+        saveStatus.className = "save-status";
+      }, 3000);
+    });
+  
+    // Function to simulate saving (returns a random success or failure)
+    function mockSaveOperation() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(Math.random() > 0.5); // Randomly resolve true or false
+        }, 1000); // Simulate 1-second delay
+      });
+    }
+  
+    // Function to set save status
+    function setSaveStatus(message, statusType) {
+      saveStatus.textContent = message;
+      saveStatus.className = `save-status ${statusType}`;
+    }
+  });
+  
