@@ -75,7 +75,7 @@ const Calendar = () => {
     // Get the background color for a specific date based on its rating
     const getBackgroundColor = (date) => {
       const dateKey = format(date, 'yyyy-MM-dd');
-      console.log("Date:", dateKey);
+      // console.log("Date:", dateKey);
       if (isSameDay(date, selectedDate)) {
         return 'primary.main'; // Highlight selected cell in blue
       } 
@@ -83,7 +83,7 @@ const Calendar = () => {
       const ratingColor = (dateKey) => {
         const entry = journalData[dateKey];
         // console.log("Entry:", entry);
-        console.log(`Journal data for ${dateKey}:\n ${JSON.stringify(entry)}`);
+        // console.log(`Journal data for ${dateKey}:\n ${JSON.stringify(entry)}`);
         if (entry && entry.rating) {
           const ratingValue = ratingInts[entry.rating];
           if (ratingValue) {
