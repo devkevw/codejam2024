@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "365 Days",
-  "description": "A digital journal that lets users log their feelings daily and view their past entries.",
+  "description": "A digital wellness journal that lets users log their feelings daily and view their past entries.",
   "version": "1.0",
   "action": {
     "default_popup": "index.html",
