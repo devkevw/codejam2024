@@ -14,6 +14,7 @@ body {
 }
 
 .form-container {
+  position: relative;
   width: 100%;
   max-width: 400px;
   /* Limits the width */
@@ -150,7 +151,7 @@ img.btn {
 }
 
 img.btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
   cursor: pointer;
 }
 
@@ -163,4 +164,18 @@ input[type="radio"]:checked + label img {
   margin-bottom: 8px;
   font-size: 16pt;
   font-weight: 500;
+}
+
+.extension {
+  position: absolute;
+  right: 20px;
+  width: 1em;
+  transition: all 0.3s ease;
+  filter: invert(96%) sepia(0%) saturate(75%) hue-rotate(168deg) brightness(89%) contrast(85%);
+
+}
+
+.extension:hover {
+  transform: scale(1.05);
+  filter: none;
 }
