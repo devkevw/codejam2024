@@ -53,3 +53,6 @@ To spin up backend locally, you'll need to:
 - [Eric Huang](https://github.com/erichugy)
 - [Zuhayr Mahmood](https://github.com/zuhayrmahmood)
 - [Kevin Wang](https://github.com/devkevw)
+
+## Demo
+Check out our [Devpost](https://devpost.com/software/365-days)!
