@@ -32,21 +32,24 @@ foster mental wellness and mindfulness over time.
 
 ## Prerequisites
 1. Install [Docker](https://docs.docker.com/engine/install/)
+2. Clone this GitHub project
 
 ## Build Project
-1. Navigate to project directory
-2. Run `scripts/start.sh` or `scripts/clean-start.sh` 
+### First time deployment
+1. Open up docker desktop
+2. Open up a terminal (like bash or zsh)
+3. Navigate to project directory
+4. Run `scripts/start.sh`
+   1. `start.sh` will create and start both the backend and the frontend.
+5. Install the chrome extension on Google Chrome
 
-## Development
-### Backend
-To spin up backend locally, you'll need to:
-1) Create a python environment
-   1) `python3 -m venv env`
-2) Install the backend dependecies with `pip3 install -r requirements.txt`
-   1) `requirements.txt` can be found `root/backend`
+### Subsequent deployments
+1) Open up Docker desktop
+2) Navigate to `Containers`
+3) Hit play on the `codejam2024` container
 
-### How to reload fastapi server
-`uvicorn app.main:app --reload`
+### To pause a deployment
+1) Hit pause on the `codejam2024` container
 
 ## Contact Information
 - [Daniel Cho](https://github.com/daniel-heemang)
