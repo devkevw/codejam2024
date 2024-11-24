@@ -15,6 +15,7 @@ class JournalEntry(BaseModel):
         # print current directory
         print(os.getcwd())
         
+        
         file_name = "journal_entries.json"
         
         # Ensure the file exists or create it
