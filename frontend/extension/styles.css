@@ -34,7 +34,7 @@ textarea {
   outline: none;
   border-radius: 0.5em;
   padding: 10px; */
-  font-family: "Parkinsans", Arial, Helvetica, sans-serif, sans-serif;
+  font-family: "Parkinsans", "Poppins", Helvetica, sans-serif;
   font-size: 16px;
   resize: none;
   border: 2px solid #ccc; /* Default border thickness */
@@ -52,8 +52,52 @@ textarea:focus {
 }
 
 
+.save-container {
+  display: flex; 
+  gap: 1em;
+  align-items: center;
+
+}
+
+
+/* button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ccc; 
+  color: #666;
+} */
+
 button {
   font-family: "Poppins", Arial, Helvetica, sans-serif, sans-serif;
+  font-size: 16px;
+  padding: 4px 6px;
+  text-align: center;
+  border: 2px solid #ccc;
+  background-color: white;
+  border-radius: 0.5em;
+  box-shadow: 0 2px rgba(153, 153, 153, 0.3);
+  width: 100%; 
+
+  cursor: not-allowed;
+
 }
+
+button:enabled {
+  color: black;
+  cursor: pointer; /* Pointer cursor for enabled state */
+  transition: color 0.3s ease; /* Smooth transition */
+}
+
+button:enabled:hover {
+  background-color: #89CFF0;
+}
+
+button:enabled:active {
+box-shadow: 0 0px rgba(153, 153, 153, 0.5);
+transform: translateY(2px);
+}
+
 
 

@@ -37,3 +37,24 @@ document.getElementById('submitButton').addEventListener('click', async () => {
         alert('An error occurred while sending the request.');
     }
 });
+
+
+// to edit default message 
+const textarea = document.getElementById('textbox');
+const radioButtons = document.querySelectorAll('input[name="mood"]');
+const submitButton = document.getElementById('submitButton');
+
+function validateForm() {
+  const isTextValid = textarea.value.trim().length > 0; // At least 1 character
+  const isRadioSelected = Array.from(radioButtons).some(radio => radio.checked); // At least 1 radio selected
+
+  // Enable the button if both conditions are met
+  submitButton.disabled = !(isTextValid && isRadioSelected);
+}
+
+// Attach event listeners to dynamically validate
+textarea.addEventListener('input', validateForm);
+radioButtons.forEach(radio => radio.addEventListener('change', validateForm));
+
+// Initial validation check on page load
+validateForm();
