@@ -10,6 +10,7 @@ body {
   background: transparent;
   margin: 0;
   padding: 0;
+  font-family: "Parkinsans", "Poppins", Helvetica, sans-serif;
 }
 
 .form-container {
@@ -18,7 +19,7 @@ body {
   /* Limits the width */
   margin: auto;
   /* Center horizontally and add top margin */
-  padding: 20px;
+  padding: 20px 20px 16px;
   /* Adds spacing inside */
   background-color: #f9f9f9;
   /* Light background */
@@ -82,7 +83,8 @@ textarea:focus {
 } */
 
 button {
-  font-family: "Poppins", Arial, Helvetica, sans-serif, sans-serif;
+  /* font-family: "Poppins", Arial, Helvetica, sans-serif, sans-serif; */
+  font-family: "Parkinsans", "Poppins", Helvetica, sans-serif;
   font-size: 16px;
   padding: 4px 6px;
   text-align: center;
@@ -117,9 +119,10 @@ button:enabled:active {
   max-width: 45px;
 }
 .save-status {
-  /* display: none; */
+  font-size: 12px;
+  min-height: 1.4em;
   font-style: italic;
-  margin-top: 0.5em;
+  margin-top: 0.2em;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
